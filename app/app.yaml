@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: devops-toolkit
-        image: vfarcic/devops-toolkit-series:3.0.0
+        image: vfarcic/devops-toolkit-series:latest
         ports:
         - containerPort: 80
         livenessProbe:
@@ -28,13 +28,6 @@ spec:
           httpGet:
             path: /
             port: 80
-        resources:
-          requests:
-            cpu: 250m
-            memory: 250Mi
-          limits:
-            cpu: 500m
-            memory: 500Mi
 
 ---
 
@@ -45,7 +38,7 @@ metadata:
   labels:
     app: devops-toolkit
 spec:
-  type: ClusterIP
+  type: NodePort
   ports:
   - port: 80
     targetPort: 80
